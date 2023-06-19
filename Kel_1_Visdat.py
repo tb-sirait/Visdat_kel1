@@ -16,13 +16,13 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import seaborn as sns
-from sklearn.preprocessing import LabelEncoder
+# from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
 
 color = ['#E966A0','#2B2730','#6554AF','#9575DE','#0E2954','#1F6E8C','#2E8A99','#84A7A1']
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 427} id="ohigkTo-sQ9v" outputId="b68455c4-6c33-42af-ba13-e26c8f16a443"
-dataset1 = pd.read_csv('taor rei no counter/Hotel Reservations.csv')
+dataset1 = pd.read_csv('Hotel Reservations.csv')
 dataset1.head(10)
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 427} id="bujyUQd-t31a" outputId="ea85b909-e100-4313-e964-5b266072d291"
@@ -132,7 +132,9 @@ total_avg_price_per_room = pemilik_hotel_sortBy_arrivalYear['avg_price_per_room'
 total_row = pd.DataFrame({'avg_price_per_room': [total_avg_price_per_room]}, index=['Total'])
 
 # Append the total row to the existing DataFrame
-pemilik_hotel_sortBy_arrivalYear_with_total = pemilik_hotel_sortBy_arrivalYear.append(total_row)
+# pemilik_hotel_sortBy_arrivalYear_with_total = pemilik_hotel_sortBy_arrivalYear.append(total_row, ignore_index=True)
+pemilik_hotel_sortBy_arrivalYear_with_total = pd.concat([pemilik_hotel_sortBy_arrivalYear, total_row], ignore_index=True)
+
 pemilik_hotel_sortBy_arrivalYear_with_total.head()
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 428} id="vCv6Yz_lpDk_" outputId="42025c25-55a1-4144-c6f8-9d4850c8d126"
@@ -232,7 +234,8 @@ total_booking_ids = overall_room_type_reserved['Booking_ID'].sum()
 total_row = pd.DataFrame({'Booking_ID': [total_booking_ids]}, index=['Total'])
 
 # Append the total row to the existing DataFrame
-overall_room_type_reserved_with_total = overall_room_type_reserved.append(total_row)
+# overall_room_type_reserved_with_total = overall_room_type_reserved.append(total_row)
+overall_room_type_reserved_with_total = pd.concat([overall_room_type_reserved, total_row], ignore_index=True)
 
 overall_room_type_reserved_with_total
 
@@ -244,7 +247,8 @@ total_booking_idss = overall_room_type_reserved['Booking_ID'].sum()
 total_row = pd.DataFrame({'Booking_ID': [total_booking_idss]}, index=['Total'])
 
 # Append the total row to the existing DataFrame
-overall_type_of_meal_plan_with_total = overall_type_of_meal_plan.append(total_row)
+# overall_type_of_meal_plan_with_total = overall_type_of_meal_plan.append(total_row)
+overall_type_of_meal_plan_with_total = pd.concat([overall_type_of_meal_plan, total_row], ignore_index=True)
 
 overall_type_of_meal_plan_with_total
 # -
@@ -418,13 +422,13 @@ for i,col in enumerate(colunas):
 plt.tight_layout()
 plt.show()
 
-# +
-colunas = ['no_of_adults','no_of_children','total']
+# # +
+# colunas = ['no_of_adults','no_of_children','total']
 
-plt.figure(figsize=(14,10))
-for i,col in enumerate(colunas):
-    ax=plt.subplot(3,3,i+1)
-    sns.barplot(x=df[col],y=df['no_of_weekend_nights'], errorbar=None,palette=color)
-    plt.title(col, fontweight='bold')
-plt.tight_layout()
-plt.show()
+# plt.figure(figsize=(14,10))
+# for i,col in enumerate(colunas):
+#     ax=plt.subplot(3,3,i+1)
+#     sns.barplot(x=df[col],y=df['no_of_weekend_nights'], errorbar=None,palette=color)
+#     plt.title(col, fontweight='bold')
+# plt.tight_layout()
+# plt.show()
