@@ -69,6 +69,7 @@ plt.xlabel("Room Type")
 plt.ylabel("Sum of Price (*10^6)")
 plt.title("Grafik keuntungan setiap tipe kamar", fontsize=16, fontweight='bold', y=1.01)
 plt.show()
+st.plotly_chart(fig)
 # -
 
 pemilik_hotel_year2017 = pemilik_hotel[pemilik_hotel['arrival_year'] == 2017]
@@ -85,6 +86,7 @@ plt.xlabel("Bulan")
 plt.ylabel("Jumlah")
 plt.title("Grafik keuntungan setiap bulannya pada tahun 2017", fontsize=16, fontweight='bold', y=1.01)
 plt.show()
+st.plotly_chart(fig)
 
 pemilik_hotel_year2018 = pemilik_hotel[pemilik_hotel['arrival_year'] == 2018]
 pemilik_hotel_groupBy_Month2018 = pemilik_hotel_year2018[['arrival_month', 'avg_price_per_room']].groupby(by='arrival_month').sum()
@@ -98,6 +100,7 @@ plt.xlabel("Bulan")
 plt.ylabel("Jumlah")
 plt.title("Grafik keuntungan setiap bulannya pada tahun 2018", fontsize=16, fontweight='bold', y=1.01)
 plt.show()
+st.plotly_chart(fig)
 
 # +
 colunas = ['arrival_year','arrival_month','arrival_date']
@@ -111,6 +114,7 @@ for i, col in enumerate(colunas):
 plt.suptitle("Rentang Keuntungan Perusahaan berdasarkan tahun, bulan, dan Hari", fontsize=16, fontweight='bold', x=0.50,y=1.00)
 plt.tight_layout()
 plt.show()
+st.plotly_chart(colunas)
 
 # +
 import matplotlib.pyplot as plt
@@ -123,6 +127,7 @@ sns.lineplot(x=dataset2['no_of_weekend_nights'], y=dataset2['avg_price_per_room'
 
 plt.suptitle("Rentang Keuntungan Perusahaan berdasarkan akhir pekan dan hari pekan", fontsize=16, fontweight='bold', x=0.50)
 plt.show()
+st.plotly_chart(fig)
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 143} id="PNHwnmtchw8S" outputId="4dbf35a1-8f41-4edf-c573-a05f20ba6c69"
 pemilik_hotel_sortBy_arrivalYear = pemilik_hotel.drop(['Booking_ID',	'no_of_adults',	'no_of_children',	'no_of_weekend_nights',	'no_of_week_nights',
@@ -151,6 +156,7 @@ ax.set_title('Rentang keuntungan Hotel berdasarkan Tahun', fontsize=16, fontweig
 ax.legend(potongan, kategori2, loc='lower left', bbox_to_anchor=(1.1, 0.5))
 
 plt.show()
+st.plotly_chart(fig)
 
 # +
 import matplotlib.pyplot as plt
@@ -168,6 +174,7 @@ for i, col in enumerate(colunas):
 plt.suptitle("Rentang Keuntungan Perusahaan berdasarkan malam hari pekan dan malam akhir pekan", fontsize=16, fontweight='bold', x=0.35)
 plt.tight_layout()
 plt.show()
+st.plotly_chart(fig)
 
 # + [markdown] id="-Zh3Dkd3pawY"
 # # Front Officer
@@ -203,6 +210,7 @@ plt.xlabel("Room Type")
 plt.ylabel("Total Room")
 plt.title("Grafik pemesanan setiap tipe kamar terlaris per 2018", fontsize=16, fontweight='bold', y=1.01)
 plt.show()
+st.plotly_chart(fig)
 
 front_officer_year2017 = front_officer[front_officer['arrival_year'] == 2017]
 front_officer_year2017
@@ -226,6 +234,7 @@ overall_room_type_reserved
 
 overall_type_of_meal_plan = front_officer[['type_of_meal_plan', 'Booking_ID']].groupby(by='type_of_meal_plan').count()
 overall_type_of_meal_plan
+st.plotly_chart(fig)
 
 # +
 # Calculate the total number of booking IDs
@@ -264,6 +273,7 @@ plt.xlabel("Room Type")
 plt.ylabel("Total Room")
 plt.title("Grafik pemesanan setiap tipe kamar terlaris", fontsize=16, fontweight='bold', y=1.01)
 plt.show()
+st.plotly_chart(fig)
 
 x = list(overall_type_of_meal_plan.index)
 y = overall_type_of_meal_plan['Booking_ID']
@@ -275,6 +285,7 @@ plt.xlabel("Meal Type")
 plt.ylabel("Total")
 plt.title("Grafik pemesanan setiap paket makanan terlaris", fontsize=16, fontweight='bold', y=1.01)
 plt.show()
+st.plotly_chart(fig)
 
 # # Marketing
 
@@ -301,6 +312,7 @@ plt.xlabel("Room Type")
 plt.ylabel("Sum of Price (*10^6)")
 plt.title("Grafik keuntungan setiap tipe kamar", fontsize=16, fontweight='bold', y=1.01)
 plt.show()
+st.plotly_chart(fig)
 
 
 
@@ -320,6 +332,7 @@ plt.xlabel("Room Type")
 plt.ylabel("Sum of Price (*10^6)")
 plt.title("Grafik keuntungan setiap tipe kamar", fontsize=16, fontweight='bold', y=1.01)
 plt.show()
+st.plotly_chart(fig)
 
 # ## revisi
 # buat perbandingan antara (no_of_adults dengan no_of_children) serta perbandingan antara (no_of_week_nights dengan no_of_weekend_nights) 
@@ -388,6 +401,7 @@ def visualizations_discrete(dataset: pd.DataFrame):
 
     # Show the plot
     plt.show()
+    st.plotly_chart(fig)
 
 
 discrete_columns, continuous_columns = select_columns(dataset1)
@@ -406,6 +420,7 @@ for i, col in enumerate(colunas.index):
     plt.title(f'Bulan {col}',fontweight='bold')
 plt.tight_layout()
 plt.show()
+st.plotly_chart(colunas)
 
 # +
 colunas = ['no_of_adults','no_of_children','no_of_weekend_nights',
@@ -422,6 +437,7 @@ for i,col in enumerate(colunas):
     plt.ylabel(None)
 plt.tight_layout()
 plt.show()
+st.plotly_chart(colunas)
 
 # # +
 # colunas = ['no_of_adults','no_of_children','total']
