@@ -18,6 +18,7 @@ import numpy as np
 import seaborn as sns
 # from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
+pd.set_option('mode.use_inf_as_null', True)
 
 color = ['#E966A0','#2B2730','#6554AF','#9575DE','#0E2954','#1F6E8C','#2E8A99','#84A7A1']
 
